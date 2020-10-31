@@ -4,8 +4,8 @@
 from flask.views import MethodView
 from flask import render_template, request
 
-from modules.example_module import Example
-from modules.db_connect_module import Database
+from KyungSooJung.modules.example_module import Example
+from KyungSooJung.modules.db_connect_module import Database
 
 class MainController(MethodView):
     template_name = None
