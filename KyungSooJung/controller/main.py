@@ -12,6 +12,7 @@ class MainController(MethodView):
     url = None
     example_handler = None
     example_insert  = None
+    asdfasdfsadfsadf = "asdf"
 
     def __init__(self):
         self.url='/'
