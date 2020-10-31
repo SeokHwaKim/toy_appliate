@@ -1,0 +1,35 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>{% block title %} Exmaple {% endblock %}</title>
+		<link rel="stylesheet" href="{{ url_for('static' , filename='plugins/fontawesome-free/css/all.min.css') }}">
+		<!--- static 폴더 아래에 css 파일에 접근 하기 위해 'url_for' 키워드를 사용해서 접근함-->
+	</head>
+{% block content %}
+<body>
+	<h1> Eaxample Page </h1>
+	<form action='/' method='POST' name=example_form>
+		<input type='text' placeholder='value 1' name='example_form_value_1'/>
+		<input type='text' placeholder='value 2' name='example_form_value_2'/>
+		<div>
+			<br>
+			<input type="submit" value='test'/>
+		</div>
+	</form>
+
+
+	<p> {{example_result}} </p>
+
+</body>
+
+</html>
+
+{% endblock %}
+{% block script %}
+	<!-- script example
+	 	<script src="{{url_for('static', filename='example.js') }}"></script>
+	-->
+{% endblock %}
+
