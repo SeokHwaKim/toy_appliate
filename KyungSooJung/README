@@ -1,1 +1,57 @@
-This directory is managed by JungSuJung
+1. Directory
+	static		-> css/js/logo/image 파일 저장
+	controller	-> flask app Class랑 연동될 Controller Class
+	modules		-> controller 에서 사용될 Class
+	templates	-> HTML 디자인 파일
+
+2. Python Indentation Info
+	Indent는 1 개의 tab은 4 개의 white space 로 한다.
+	2.1 등록방법
+		- vim ~/.vimrc
+		- 아래 구문 기입
+			- set ts=4
+			- set sw=4
+			- set noexpandtab
+			- set nojoinspaces
+			- set shiftwidth=4
+			- set tabstop=4
+			- set et
+
+3. Example Project Architecture
+	3.1 app.py
+		-> python flask web server app 을 실행하는파일
+	3.2 controller/main.py
+		-> main 페이지에 등록될 컨드롤러, 즉 이 녀석이 templates/main.html 파일을 불러와 Web 화면에 띄워주는 역할을 하며 get, post 메소드 처리를 담당한다.
+	3.3 modules/example_module.py
+		-> main controller 에서 사용될 sum 메소드를 포함하고 있는클래스의 정의 파일
+	3.4 modules/db_connect_module.py
+		-> mysql(maria db) 와 연결 및 query문 전달을 담당하는 클래스의 정의파일
+	3.5 modules/db_data_module.py
+		-> 실질적인 query문이 작성되는 클래스의 정의 파일
+	3.6 templates/main.html
+		-> Web에 출력할 html 파일
+		- '{%' 의 의미
+			-> Flask 에서 html 을 관리하기위해 사용하는 키워드
+			-> {% block title %} Title {% endblock %} 이라고 하면 title 을 Title 로 변경하는 block 을 의미함
+			-> 이런 block 들은 꼭 쌍을 맞춰줘야함 (block something + endblock)
+		- flask app 에서 만들어진 결과는 render_tamplate에 값을 추가해줌으로써 Browser에서 확인이 가능하다. (main.py 및 template/main.html 참조)
+
+4. mysql 은 아직 서버 구현을 안한 상태이기 때문에 작성이 안되었음
+
+5. Start Guide
+	5.1 install_modules.sh 실행 (python3, pip, flask 를 설치함)
+	5.2 python3 app.py (Flask 서버 실행)
+	5.3 IP 쳐서 들어가서 확인해봄
+
+	- 새로운 페이지를 추가할 때
+		1. templates/ 아래에 html 파일 생성
+		2. controller/ 아래에 등록할 controller class 파일 생성 및 정의
+		3. app.py 에서 controller 및 페이지를 등록함
+
+	- 새로운 모듈을 추가할 떄
+		1. modules/ 아래에 modules 클래스 정의
+		2. controller/ 아래의 적절한 페이지를 담당하는 controller 파일에서 class 선언 후 사용함
+
+	- 새로운 Query 를 작성할 때
+		1. modules/db_data_module.py 파일 아래에 query를 작성하거나 혹은 데이터에 따라 파일을 나누어 쿼리문 작성 (예., 계정조회 module, 상품조회 module 을 나누어서 Query도 분할하는게 더 OOP 적인 코드작성법)
+
